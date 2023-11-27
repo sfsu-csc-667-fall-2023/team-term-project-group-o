@@ -1,242 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/front end/game.css" />
-  </head>
-  <body>
-    <header>
-      <div>
-        <h1>Name</h1>
-      </div>
-
-      <input type="checkbox" id="check" />
-      <label for="check">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6 bars"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
-      </label>
-      <nav>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body >
+  <div class="background_red">
+    <nav>
         <ul>
-          <li><a href="/front end/index.html">Home</a></li>
-          <li><a href="/front end/game.html">About Game</a></li>
-          <li><a href="/front end/profile.html">Profile</a></li>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a class="active" href="game.html">Game</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li ><a href="signup.html">Sign Up</a></li>
+          <li><a href="profile.html">Profile Settings</a></li>
         </ul>
-      </nav>
-      <div class="actions">
-        <form action="/front end/login.html">
-          <button >Log In</button>
-        </form>
-        
+    </nav>
+    <section class="game_section">
+      <h1 class="text-white">Uno Online Game</h1>
+      <div class="game_div">
+        Uno Game 
       </div>
-    </header>
-    <main>
-      <form action="#">
-      <section class="game-wireframe">
-        <h1>Game Application Wireframe</h1>
-
-        <div class="container">
-          <div class="card back">
-            <img src="/front end/img/Uno-image.jpeg" alt="game frame image">
-          </div>
-          <div class="card front">
-            <img src="/front end/img/Uno-image.jpeg" alt="game frame image">
-          </div>
-        </div>
-      </section>
-      <section class="friend-list">
-        <h1>
-          Choose friends for create <br />
-          a room
-        </h1>
-        <div class="friends-container">
-          <div>
-            <p>Friends List:</p>
-          </div>
-
-          <div class="friend-box">
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-            <div class="friend-card"></div>
-          </div>
-        </div>
-      </section>
-      <section class="create-room">
-        <h1>Create Room</h1>
-        <div class="container">
-          <div class="text-box">
-            <label for="challeger name">Challenger Name:</label>
-            <input type="text" id="challenger name" required />
-          </div>
-          <div class="text-box">
-            <label for="Opponent name">Opponent Name:</label>
-            <input type="text" id="Opponent name" required />
-          </div>
-          <div class="text-box">
-            <label for="Enter Coins">Enter Coins:</label>
-            <input type="number" id="enterCoins" min="0" required />
-          </div>
-        </div>
-      </section>
-      <section class="competitors">
-        <h1>Competitors</h1>
-        <div class="competitors-box">
-          <div class="competitors-card">
-            <img src="/front end/img/Uno-image.jpeg" alt="competitors images">
-          </div>
-          <div class="competitors-card">
-            <img src="/front end/img/Uno-image.jpeg" alt="competitors images">
-          </div>
-        </div>
-      </section>
-      <section class="friends-chat">
-        <h1>
-          Friends Chat <br />
-          List
-        </h1>
-        <div class="chat-list-card">
-          <p>Chat list:</p>
-          <form action="">
-            <div class="radio-box">
-              <input type="radio" id="radio1" value="name1" name="name" />
-              <label for="radio1">Name</label>
-            </div>
-            <div class="radio-box">
-              <input type="radio" id="radio2" value="name2" name="name" />
-              <label for="radio2">Name</label>
-            </div>
-            <div class="radio-box">
-              <input type="radio" id="radio3" value="name3" name="name" />
-              <label for="radio3">Name</label>
-            </div>
-          </form>
-        </div>
-      </section>
-      <section class="download-games">
-        <h1>
-          Download Games <br />
-          and play
-        </h1>
-
-        <div class="game-box">
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Download Now!</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Download Now!</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Download Now!</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Download Now!</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Download Now!</p>
-          </div>
-        </div>
-      </section>
-      <section class="player-cards">
-        <h1 class="title">Player Cards</h1>
-        <div class="player-list">
-          <div>
-            <h1>Player Card Holders</h1>
-            <p>Name List:</p>
-          </div>
-
-          <div class="player-container">
-            <div class="player-box">
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-              <div class="friend-card"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="download-games">
-        <h1>Buy Player Card</h1>
-
-        <div class="game-box">
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Buy</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Buy</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Buy</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Buy</p>
-          </div>
-          <div>
-            <div class="game-card"><img src="/front end/img/Uno-image.jpeg" alt="competitors images"></div>
-            <p>Buy</p>
-          </div>
-        </div>
-      </section>
-      <div class="update-actions">
-        <button class="update-btn">Update Now</button>
+      <div class="game_des">
+        <h3 class="text-white">Description:</h3>
+        <p class="text-white">UNO is a multi-player card game in which the objective is to be the first player to get rid of all the cards in their hand.  Each player is dealt 7 cards and players take turn drawing cards from the deck.  If a player has a card in their hand matching the card they drew from the deck, they can play that card (helping to reduce the total cards in their hand).  If the player doesn't have a matching card in their hand, they must draw another card from the deck to add to their hand, which increases the total number of cards they need to get rid of to win.  When a player has only one card left in their hand, they must yell "UNO!," but if an opposing player notices before the original player has a chance to say "UNO," the original player must draw four more cards.</p>
       </div>
-    </form>
-
-  
-    </main>
-  </body>
+    </section>
+  </div>
+</body>
 </html>

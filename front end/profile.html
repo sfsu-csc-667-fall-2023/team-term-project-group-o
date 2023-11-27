@@ -1,74 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="min-height: 100%; position: relative;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/front end/game.css">
+    <link rel="stylesheet" href="index.css">
+
 </head>
-<body>
-    <header>
-        <div>
-          <h1>Name</h1>
-        </div>
-  
-        <input type="checkbox" id="check" />
-        <label for="check">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 bars"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </label>
-        <nav>
-          <ul>
-            <li><a href="/front end/index.html">Home</a></li>
-            <li><a href="/front end/game.html">About Game</a></li>
-            <li><a href="/front end/profile.html">Profile</a></li>
-          </ul>
-        </nav>
-        <div class="actions">
-          <form action="/front end/login.html">
-            <button >Log In</button>
-          </form>
-          
-        </div>
-      </header>
-    <section class='profile'>
-        <h1>Your User Profile</h1>
-        <form class='form' >
-            <div class='control'>
-              <label htmlFor="new-password">New Password</label>
-              <input
-                type="password"
-                id="new-password"
-                
-              />
+<body style="height: 100%;">
+  <div class="cloud-container">
+    <nav>
+      <ul>
+          <li><a  href="index.html">Dashboard</a></li>
+          <li><a href="game.html">Game</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li ><a href="signup.html">Sign Up</a></li>
+          <li><a class="active" href="profile.html">Profile Settings</a></li>
+      </ul>
+      </nav>
+      <section class='profile'>
+          <h1 class="profile_h1">Your Profile Settings</h1>
+          <form action="">
+            <h2 class="">Change Password</h2>
+            <div class="input">
+                <input type="text" placeholder="Old Password" required>
             </div>
-            <div class='control'>
-              <label htmlFor="old-password">Old Password</label>
-              <input
-                type="password"
-                id="old-password"
-                
-              />
+            <div class="input">
+                <input type="text" placeholder="New Password" required>
             </div>
-            <div class='action'>
-              <button>Change Password</button>
+            <div class="input">
+                <input type="password" placeholder="Retype New Password" required>
             </div>
-          </form>
-      
+        <button type="submit" class="btn">Sign up</button>
+        </form>
+        
       </section>
-     
+  </div>
     
 </body>
 </html>

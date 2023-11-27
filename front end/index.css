@@ -1,12 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Open Sans", "Lato", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #414141;
   background-color: #e4f1f1;
 }
@@ -15,13 +14,17 @@ nav {
   background-color: #fff;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #202020;
   color: #74dacc;
-  height: 5rem;
+  height: 8vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+.active{
+  color: #B0211A;
+}
+
 .welcome,
 .intro,
 .game-rights {
@@ -45,12 +48,93 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: #74dacc;
+  color: black;
   font-weight: bold;
+  transition: 0.2s all;
+}
+nav a:hover{
+  color: #B0211A;
 }
 
+/* start new sign up  */
+.cloud-container{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:hidden;
+  z-index:-1;
+  background: #B0211A;
+}
+
+.signup-section{
+  transform: translateY(25%);
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 420px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 02);
+  border-radius: 10px;
+  padding: 30px 40px;
+  color: #fff;
+}
+
+.wrapper input {
+  margin: 5px;
+  width: 100%;
+  height: 50px;
+  background: none;
+  outline: none;
+  border: 2px solid;
+  border-radius: 40px;
+  padding: 20px 45px 20px 20px;
+  font-size: 16px;
+  color: #fff;
+}
+.input{
+  padding: 5px 0px;
+}
+.btn{
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  outline: none;
+  border : solid #fff;
+  border-radius: 40px ;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+}
+.wrapper h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 10px;
+}
+
+.wrapper p {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+.wrapper_a{
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-top: 0px;
+  text-align: center;
+}
+::placeholder {
+  color: #fff
+}
+
+/* end new sign up  */
 .intro img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 5px;
 }
@@ -67,6 +151,7 @@ nav a {
   justify-content: center;
   font-size: 3rem;
   font-weight: bold;
+  margin: 0;
 }
 .login_container {
   width: 40rem;
@@ -137,6 +222,15 @@ nav a {
   justify-content: center;
   margin-top: 10px;
 }
+.fw-bold{
+  font-weight: 800;
+}
+.color-black{
+  color: #000;
+}
+.text-white{
+  color: white;
+}
 
 /* FOOTER */
 /* .footer-sec {
@@ -174,4 +268,72 @@ nav a {
 .signup-container a {
   text-decoration: none;
   color: white;
+}
+
+.profile_h1{
+  font-size: 35px;
+  text-align: center;
+  color: white;
+}
+
+.profile h2 {
+  color: white;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.profile input{
+  margin: 5px;
+  min-width: 100%;
+  width: 450px;
+  height: 50px;
+  background: none;
+  outline: none;
+  border: 2px solid;
+  border-radius: 40px;
+  padding: 20px 45px 20px 20px;
+  font-size: 16px;
+  color: #fff;
+}
+@media (max-width:500px) {
+  .profile input{
+    width: 300px;
+  }
+  .profile .btn{
+    width: 310px !important;
+  }
+}
+
+.profile .btn{
+  width: 460px;
+}
+.profile form{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.game_section{
+padding: 2em 4em;
+}
+@media (max-width:868px) {
+  .game_section{
+  padding: 2em 2em;
+  }
+}
+@media (max-width:500px) {
+  .game_section{
+  padding: 2em 0.5em;
+  }
+}
+.game_div{
+  background-color: white;
+  border-radius: 5px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.background_red{
+  background-color: #B0211A;
 }
