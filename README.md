@@ -5,7 +5,7 @@
 
 This is a group project by :- 
 
-Malavya Raval  
-Brandon Peralta  
-Nicholas Paqcanlungan  
-Siaarhei Pushkin  
+Malavya Raval   
+Brandon Peralta   
+Nicholas Paqcanlungan   
+Siaarhei Pushkin   
