@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #414141;
+  background-color: #e4f1f1;
+}
+nav {
+  padding: 20px;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #74dacc;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active{
+  color: #B0211A;
+}
+
+.welcome,
+.intro,
+.game-rights {
+  margin: 2rem;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: 0.2s all;
+}
+nav a:hover{
+  color: #B0211A;
+}
+
+/* start new sign up  */
+.cloud-container{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:hidden;
+  z-index:-1;
+  background: #B0211A;
+}
+
+.signup-section{
+  transform: translateY(25%);
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 420px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 02);
+  border-radius: 10px;
+  padding: 30px 40px;
+  color: #fff;
+}
+
+.wrapper input {
+  margin: 5px;
+  width: 100%;
+  height: 50px;
+  background: none;
+  outline: none;
+  border: 2px solid;
+  border-radius: 40px;
+  padding: 20px 45px 20px 20px;
+  font-size: 16px;
+  color: #fff;
+}
+.input{
+  padding: 5px 0px;
+}
+.btn{
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  outline: none;
+  border : solid #fff;
+  border-radius: 40px ;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+}
+.justify-content-between{
+  justify-content: space-between;
+}
+.d-flex{
+  display: flex;
+}
+.wrapper h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 10px;
+}
+
+.wrapper_a{
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-top: 0px;
+  text-align: center;
+}
+::placeholder {
+  color: #fff
+}
+
+.mb-0{
+  margin-bottom: 0;
+}
+
+.align-items-end{
+  align-items: end;
+}
+
+/* end new sign up  */
+.intro img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.game-rights {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+/* LoginPage */
+.login-head {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+}
+.login_container {
+  width: 40rem;
+  max-width: 90%;
+  margin: 2rem auto;
+  color: white;
+  background-color: #03be9f;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2rem;
+  border-radius: 10px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+@media screen and (max-width: 768px) {
+  .login_container {
+    padding: 1.5rem;
+  }
+}
+
+.login-form {
+  display: grid;
+  grid-gap: 8px;
+}
+
+.login-label {
+  font-weight: bold;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+@media screen and (max-width: 768px) {
+  .login-input {
+    width: 100%;
+  }
+}
+
+.login_button {
+  padding: 0.8rem 1.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  color: #03be9f;
+
+  font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+  .login_button {
+    padding: 0.6rem 1rem;
+  }
+}
+
+.login_button:hover,
+.login_button:active {
+  background-color: wheat;
+}
+
+.login-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.fw-bold{
+  font-weight: 800;
+}
+.color-black{
+  color: #000;
+}
+.text-white{
+  color: white;
+}
+.w-100{
+  width: 100%;
+}
+.forget_pass{
+  border: 0;
+  text-decoration: underline;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 1px;
+  font-weight: 540;
+}
+/* FOOTER */
+/* .footer-sec {
+  padding: 5rem;
+  width: 100%;
+  background-color: rgb(190, 189, 189);
+}
+.footer-btn {
+  padding: 1rem 2rem;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .footer-btn {
+    padding: 0.6rem 1rem;
+  }
+}
+.footer-btn:hover,
+.footer-btn:active {
+  background-color: rgb(163, 139, 139);
+}
+
+.footer-button {
+  display: flex;
+  justify-content: end;
+} */
+.signup-container {
+  text-align: center;
+}
+.signup-container p {
+  margin: 0;
+}
+.signup-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.profile_h1{
+  font-size: 35px;
+  text-align: center;
+  color: white;
+}
+
+.profile h2 {
+  color: white;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.profile input{
+  margin: 5px;
+  min-width: 100%;
+  width: 450px;
+  height: 50px;
+  background: none;
+  outline: none;
+  border: 2px solid;
+  border-radius: 40px;
+  padding: 20px 45px 20px 20px;
+  font-size: 16px;
+  color: #fff;
+}
+@media (max-width:500px) {
+  .profile input{
+    width: 300px;
+  }
+  .profile .btn{
+    width: 310px !important;
+  }
+}
+
+.profile .btn{
+  width: 460px;
+}
+.profile form{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.game_section{
+padding: 2em 4em;
+}
+@media (max-width:868px) {
+  .game_section{
+  padding: 2em 2em;
+  }
+}
+@media (max-width:500px) {
+  .game_section{
+  padding: 2em 0.5em;
+  }
+}
+.game_div{
+  background-color: white;
+  border-radius: 5px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.background_red{
+  background-color: #B0211A;
+}
+.h-auto{
+  height: fit-content !important;
+}
+.d-none{
+  display: none !important;
+}
+
+#reset_panel1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000c2;
+  display: flex;
+  justify-content: center;
+}
+.position-relative{
+  position: relative;
+}
+.back{
+  font-size: 20px;
+  border: 0;
+  background-color: transparent;
+  color: white;
+}

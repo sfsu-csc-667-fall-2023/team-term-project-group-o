@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" style="min-height: 100%; position: relative;">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body style="height: 100%;">
+  <div class="cloud-container">
+    <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="game.html">Game</a></li>
+          <li><a class="active" href="login.html">Login</a></li>
+          <li ><a  href="signup.html">Sign Up</a></li>
+          <li><a href="profile.html">Profile Settings</a></li>
+        </ul>
+    </nav>
+    <section class="signup-section">
+          <div class="wrapper">
+              <form action="">
+                  <h1 class="">Login</h1>
+                  <div class="input">
+                      <input type="text" placeholder="Username" required>
+                  </div>
+                  <div class="input">
+                      <input type="text" placeholder="Email" required>
+                  </div>
+                  <div class="input">
+                      <input type="password" placeholder="Password" required>
+                  </div>
+              <button type="submit" class="btn"><span>Login</span></button>
+              <div class="d-flex justify-content-between align-items-end">
+                <p class="mb-0">Forgotten password?
+                </p>
+                <a class="wrapper_a">
+                  <button type="button" class="forget_pass" id="reset_btn1">
+                  reset password
+                  </button>
+                </a>
+              </div>
+              <div class="w-100">
+                <a class="btn" href="signup.html">Don't have an account?</a>
+              </div>
+              </form>
+          </div>
+        </section>
+        <div class="d-none" id="reset_panel1">
+          <div class="wrapper h-auto position-relative" >
+            <form action="">
+                <button class="back" type="button" id="back_btn1"> &larr; </button>
+                <h1 class="">Reset Password</h1>
+                <div class="input">
+                    <input type="text" placeholder="Email" required>
+                </div>
+            <button type="submit" class="btn"><span>Send Code</span></button>
+            </form>
+          </div>
+        </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
