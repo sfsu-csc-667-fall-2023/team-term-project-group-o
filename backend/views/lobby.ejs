@@ -1,32 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head >
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/index.css">
+<head>
+  <title><%= title %></title>
+  <script src="/scripts/index.js" defer></script>
+  <link rel="stylesheet" href="/stylesheets/lobby.css" />
 </head>
-<body >
-  <div class="background_red">
-    <nav>
-        <ul>
-          <li><a href="./">Dashboard</a></li>
-              <li><a class="active" href="./game">Game</a></li>
-              <li><a href="./login">Login</a></li>
-              <li ><a href="./signUp">Sign Up</a></li>
-              <li><a href="./lobby">Lobby</a></li>
-        </ul>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo-container">
+      <a href="/">
+        <img class="logo" src="/img/logo.png" alt="Project Logo">
+      </a>
+    </div>
+    <nav class="link-button-container">
+      <a class="link-button" href="/">Home</a>
+      <a class="link-button" href="/authentication/login">Login</a>
+      <a class="link-button" href="/authentication/logout">Logout</a>
+      <a class="link-button" href="/authentication/register">SignUp</a>
+      <a class="link-button" href="/lobby">Lobby</a>
     </nav>
-    <section class="game_section">
-      <h1 class="text-white">Uno Online Game</h1>
-      <div class="game_div">
-        Uno Game 
+  </header>
+
+  <!-- Main Content -->
+  <div class="page-container">
+    <!-- Lobby Container -->
+    <div class="lobby-container">
+      <!-- Lobby Basic Information -->
+      <h1 class="lobby-title">Lobby Page</h1>
+      <h3 class="current-user-name"> User: <%= user.username %> - ID:(<%= user.id %>)</h3>
+
+      <!-- Game Create Button -->
+      <form class="create-game-form" method="post" action="/games/create">
+        <input type="submit" value="Create Game" />
+      </form>
+
+      <!-- Game List-->
+      <div id="games-list">
+        <h2>Game List</h2>
+
+        <!-- Available Games -->
+        <div class="game-section">
+          <label class="games-label"> Available Games (Not Joined, Not Started) </label>
+          <div class="button-container">
+            <% if(availableGames.length > 0) { %>
+              <% for(game of availableGames) { %>
+                <a class="join-button" href="/games/<%= game.id %>/join">Join <%= game.id %></a>
+              <% }%>
+            <% } else { %>
+              <p>No Games are Available to Join, instead create one</p>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Rejoinable Games -->
+        <div class="game-section">
+          <label class="games-label"> Games (Joined, Not Started) </label>
+          <div class="button-container">
+            <% if(reJoinGames.length > 0) { %>
+              <% for(game of reJoinGames) { %>
+                <a class="join-button" href="/games/<%= game.id %>">Join <%= game.id %></a>
+              <% }%>
+            <% } else { %>
+              <p>No Games are Available to Join, instead create one</p>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Running Games -->
+        <div class="game-section">
+          <label class="games-label">Running Games (Joined, Started)</label>
+          <div class="button-container">
+            <% if(runningGames.length > 0) { %>
+              <% for(game of runningGames) { %>
+                <a class="join-button" href="/games/<%= game.id %>">Join <%= game.id %></a>
+              <% }%>
+            <% } else { %>
+              <p>No Games are Available to Join, instead create one</p>
+            <% } %>
+          </div>
+        </div>
+      </div> 
+      <!-- End of Game List -->
+    </div>
+    <!-- End of Game List Container-->
+
+    <!-- Chat Area -->
+    <div id="chat">
+      <h2>Chat Area</h2>
+      <!-- Chat Box -->
+      <div id="chat-container">
+        <div id="messages"></div>
+        <label>
+          <input id="chatMessage" name="chat-message" placeholder="Message..." />
+        </label>
       </div>
-      <div class="game_des">
-        <h3 class="text-white">Description:</h3>
-        <p class="text-white">UNO is a multi-player card game in which the objective is to be the first player to get rid of all the cards in their hand.  Each player is dealt 7 cards and players take turn drawing cards from the deck.  If a player has a card in their hand matching the card they drew from the deck, they can play that card (helping to reduce the total cards in their hand).  If the player doesn't have a matching card in their hand, they must draw another card from the deck to add to their hand, which increases the total number of cards they need to get rid of to win.  When a player has only one card left in their hand, they must yell "UNO!," but if an opposing player notices before the original player has a chance to say "UNO," the original player must draw four more cards.</p>
-      </div>
-    </section>
+    </div>
   </div>
+  
+  <!-- Chat Message Template -->
+  <template id="chat-message-template">
+    <div>
+      <span class="username"></span>
+      <span class="message"></span>
+      <span class="timestamp"></span>
+    </div>
+  </template>
 </body>
 </html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Page</title>
+  <link rel="stylesheet" href="/stylesheets/games.css">
+  <script defer src="/scripts/index.js"></script>
+  <script defer src="/scripts/games/index.js"></script>
+</head>
+
+<body>
+
+  <!-- Logo -->
+  <div class="logo-container">
+    <a href="/">
+      <img class="logo" src="/img/logo.png" alt="Project Logo">
+    </a>
+  </div>
+
+  <!-- Game Buttons Container -->
+  <div class="games-buttons-container">
+    <!-- Lobby Button -->
+    <form class="lobby-form" method="get" action="/lobby">
+      <input type="submit" value="Lobby">
+    </form>
+
+    <!-- Exit Button -->
+    <form class="exit-form" method="post" action="/games/exit/<%= game_id %>">
+      <input type="submit" value="Exit" />
+    </form>
+  </div>
+
+  <div class="page-container">
+    <div class="game-container">
+      <div class="game-container-header">
+        <div>
+          <h3>GameID:<%= game_id %></h3>
+          <h3 id="userid-head"></h3>
+        </div>
+
+        <h1 id="gamepage-header">Game Page</h1>
+        <!-- Start Button -->
+        <button class="start-button" onclick="ClickUrlGET(`/games/<%=game_id%>/start`)">Start</button>
+      </div>
+
+      <!-- Table: Username: Number of Cards Holding-->
+      <div id="users-cardcount">
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Total Cards Holding</th>
+            </tr>
+          </thead>
+          <tbody id="players">
+            <tr class="playersinfo">
+              <th class="username"></th>
+              <th class="count"></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span id="current-player-turn">Current Player: ##</span>
+
+      <!-- Where the Image of the Top Card is appended to -->
+      <div class="main-cards">
+        <button onclick="ClickUrlPOST(`/games/<%=game_id%>/draw`)">
+          <img class="topcard-img" src="/img/option_draw2.png">
+        </button>
+        <div id="topcardimg"></div>
+      </div>
+
+      <!-- A Card -->
+      <div>
+        <div id="game-card-rows">
+          <img class="cardimage">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        const url = `/games/init/<%=game_id%>`;
+        fetch(url, {
+          method: "get"
+        }).then(value => {})
+      })
+
+      function ClickUrlPOST(url) {
+        console.log(url)
+        fetch(url, {
+          method: "post"
+        })
+      }
+
+      function ClickUrlGET(url) {
+        console.log(url)
+        fetch(url, {
+          method: "get"
+        })
+      }
+    </script>
+
+    <!-- Chat Area -->
+    <div id="chat">
+      <h2>Chat Area</h2>
+      <!-- Chat Box -->
+      <div id="chat-container">
+        <div id="messages"></div>
+        <label>
+          <input id="chatMessage" name="chat-message" placeholder="Message..." />
+        </label>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<!-- Templates for the sockets async data-->
+
+<!-- Top Card Table Template-->
+<template id="topcard-template">
+  <tr>
+    <th class="color"></th>
+    <th class="value"></th>
+    <th class="userid"></th>
+  </tr>
+</template>
+
+<!-- A TopCard Template -->
+<template id="topcard-template-img">
+  <img class="topcard-img" src="">
+</template>
+
+<!-- A User Template -->
+<template id="user-template">
+  <span class="username"></span>
+  <div class="cardsCount"></div>
+</template>
+
+<!-- A Card Image Template -->
+<template id="card-template">
+  <img class="cardimage" src="">
+</template>
+
+<!-- A Chat Message Template -->
+<template id="chat-message-template" value="<%= game_id %>">
+  <div>
+    <span class="username"></span>
+    <span class="message"></span>
+  </div>
+</template>
+
+<!-- A Player Template -->
+<template id="players-template">
+  <tr>
+    <th class="username"></th>
+    <th class="count"></th>
+  </tr>
+</template>

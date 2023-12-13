@@ -1,64 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head >
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/index.css">
-</head>
-<body style="height: 100%;">
-  <div class="cloud-container">
-    <nav>
-        <ul>
-          <li><a href="./">Dashboard</a></li>
-              <li><a class="active" href="./game">Game</a></li>
-              <li><a href="./login">Login</a></li>
-              <li ><a href="./signUp">Sign Up</a></li>
-              <li><a href="./lobby">Lobby</a></li>
-        </ul>
-    </nav>
-    <section class="signup-section">
-          <div class="wrapper">
-              <form>
-                  <h1 class="">Login</h1>
-                  <div class="input">
-                      <input type="text" placeholder="Username" required>
-                  </div>
-                  <div class="input">
-                      <input type="text" placeholder="Email" required>
-                  </div>
-                  <div class="input">
-                      <input type="password" placeholder="Password" required>
-                  </div>
-              <button type="submit" class="btn"><span>Login</span></button>
-              <div class="d-flex justify-content-between align-items-end">
-                <p class="mb-0">Forgotten password?
-                </p>
-                <a class="wrapper_a">
-                  <button type="button" class="forget_pass" id="reset_btn1">
-                  reset password
-                  </button>
-                </a>
-              </div>
-              <div class="w-100">
-                <a class="btn" href="./signUp">Don't have an account?</a>
-              </div>
-              </form>
-          </div>
-        </section>
-        <div class="d-none" id="reset_panel1">
-          <div class="wrapper h-auto position-relative" >
-            <form action="">
-                <button class="back" type="button" id="back_btn1"> &larr; </button>
-                <h1 class="">Reset Password</h1>
-                <div class="input">
-                    <input type="text" placeholder="Email" required>
-                </div>
-            <button type="submit" class="btn"><span>Send Code</span></button>
-            </form>
-          </div>
-        </div>
-  </div>
-  <script src="index.js"></script>
-</body>
+<html>
+  <head>
+    <title><%= title %></title>
+    <script src="/scripts/bundle.js"></script>
+    <link rel="stylesheet" href="/stylesheets/authentication.css" />
+  </head>
+  <body>
+
+
+    <div class="logo-container">
+      <a href="/">
+        <img class="logo" src="/img/logo.png">
+      </a>
+    </div>
+
+    <div class="link-button-container">
+      <a class="link-button" href="/">Home</a>
+      <a class="link-button" href="/authentication/login">Login</a>
+      <a class="link-button" href="/authentication/register">SignUp</a>
+      <a class="link-button" href="/lobby">Lobby</a>
+    </div>
+
+    
+    <form class="login-form" method="post" action="/authentication/login">
+      <h1 class="form-title">Login</h1>
+      
+      <label for="email">Email:</label>
+      <input name="email" type="email" autocomplete="email" placeholder="Email"/>
+
+      <label for="password">Password:</label>
+      <input name="password" type="password" autocomplete="current-password" placeholder="Password"/>
+
+      <input type="submit" value="Login" />
+    </form>
+  </body>
 </html>
