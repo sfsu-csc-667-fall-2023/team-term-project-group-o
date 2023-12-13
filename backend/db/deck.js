@@ -1,6 +1,5 @@
 const db = require("./connection.js");
 
-//Gamebag queries
 const UPDATE_GAMEBAG_USERID = "UPDATE gamebag SET userid = $1 WHERE gameid=$2 AND value=$3 AND color=$4 AND specialcard=$5";
 const SELECT_RANDOMCARDS = "SELECT * FROM gamebag WHERE gameid = $1 AND userid = $2 ORDER BY RANDOM() LIMIT $3;";
 const SELECT_GAMECARDS = "SELECT * from gamebag WHERE gameid=$1 AND NOT userid = 0";
@@ -10,7 +9,6 @@ const TOPCARD = "SELECT * from gamebag WHERE gameid=$1 AND userid = -1";
 const GET_USER_TABLE_ORDER = "SELECT user_id, table_order FROM game_users"
 
 
-//Game-Users Queries
 const GET_GAME_USERS_COUNT = "SELECT COUNT(*) FROM game_users WHERE game_id=$1";
 
 const GET_USERS = "SELECT id, username FROM users, game_users WHERE game_users.game_id=$1 AND game_users.user_id=users.id";
@@ -80,10 +78,6 @@ const getCurrentStateUser = async (game_id, user_id) => {
 const getTableOrder = async (game_id) => {
   return await db.any(GET_USER_TABLE_ORDER,[game_id]);
 }
-
-
-
-//This is for single flow direction. not bidirectional, will update in future.
 
 
 module.exports = {

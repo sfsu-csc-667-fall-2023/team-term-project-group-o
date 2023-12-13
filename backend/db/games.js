@@ -1,7 +1,6 @@
 const db = require("./connection.js");
 const Deck = require("./deck.js");
 
-//Game SQL Queries
 const CREATE_SQL = "INSERT INTO   game DEFAULT VALUES RETURNING id";
 const USER_GAMES = "SELECT id FROM game WHERE is_started = false AND is_alive = true AND id IN (SELECT game_id FROM game_users WHERE user_id=$1)";
 const RUNNING_GAMES = "SELECT id FROM game WHERE is_started = true AND is_alive = true AND id IN (SELECT game_id FROM game_users WHERE user_id=$1)";
@@ -10,7 +9,6 @@ const AVAILABLE_GAMES_LIST = "SELECT game_id as id FROM game_users WHERE game_id
 const UPDATE_IS_ALIVE = "UPDATE game SET is_alive=false where $id = $1";
 const IS_STARTED = "SELECT EXISTS (select * from game WHERE id = $1)";
 
-//Game-Users SQL Queries
 const GET_EVERYTHING_GAME_USERS = "SELECT * FROM game_users";
 const JOIN_GAME = "INSERT INTO game_users (user_id, game_id, current, table_order) VALUES ($1, $2, $3, $4)";
 const COUNT_PLAYERS = "SELECT COUNT(table_order) FROM game_users WHERE game_id=$1";
@@ -19,14 +17,11 @@ const GET_GAME_USERS_COUNT = "SELECT COUNT(*) FROM game_users WHERE game_id=$1";
 const GET_GAME_USERS = "SELECT * FROM game_users WHERE game_id = $1";
 
 
-//Users and Game-Users SQL Queries
 const GET_USERS = "SELECT id, username FROM users, game_users WHERE game_users.game_id=$1 AND game_users.user_id=users.id";
 const DELETE_USER_GAME = "DELETE FROM game_users where user_id=$1 AND game_id=$2";
 
-//Game and Game-Users SQL Queries
 const CREATING_USER_SQL = "SELECT username FROM users, game_users WHERE game_users.game_id=$1 AND table_order=0 AND game_users.user_id=users.id";
 
-//GameBag SQL Queries
 const GAMEBAG = "INSERT INTO gamebag (value, color, gameid, userid, specialcard ) VALUES ($1, $2, $3, $4, $5)";
 const UPDATE_GAMEBAG_USERID = "UPDATE gamebag SET userid = $1 WHERE gameid=$2 AND value=$3 AND color=$4 AND specialcard=$5";
 const SELECT_RANDOMCARDS = "SELECT * FROM gamebag WHERE gameid=$1 AND userid=$2 ORDER BY RANDOM() LIMIT $3";
@@ -35,7 +30,6 @@ const SELECT_USER_CARDS_COUNT = "SELECT count(*) FROM gamebag WHERE gameid=$1 AN
 const SELECT_GAME_USER = "SELECT * FROM game_users WHERE game_id = $1 AND user_id=$2";
 const REMOVE_USER_GAMEBAG = "UPDATE gamebag SET userid = 0 WHERE gameid=$1 AND userid = $2";
 
-//current_game Queries
 const GET_CURRENT_GAME = "SELECT * FROM current_game WHERE game_id = $1"
 const UPDATE_CURRENT_GAME = "UPDATE current_game SET current_number=$1, current_color=$2, current_direction=$3, user_id=$4, specialcard = $5, current_buffer=$6, buffer_count=$7 WHERE game_id=$8"
 const UPDATE_CURRENT_USER_DIRECTION = "UPDATE current_game SET user_id=$1, current_direction=$2 WHERE game_id=$3";
@@ -57,42 +51,30 @@ const is_started = async (game_id) => {
   return gamestarted
 }
 
-//Create a Game
-//Insert the creating User into the game_users table
 const create = async (user_id) => {
-  //Create a Game
   const { id } = await db.one(CREATE_SQL);
 
-  //Add the Player to the Game
   await db.none(JOIN_GAME, [user_id, id, false, 1]);
   
-  //Return the Game_Id
   return { id };
 };
 
-//Gets the Creating User of a game
 const creatingUser = async (game_id) => db.one(CREATING_USER_SQL, [game_id]);
 
-//Adds a User to a Game_Users game with +1 table_order
 const join = async (user_id, game_id) => {
   const { max } = await db.one( MAX_TABLE_ORDER, [game_id]);
 
   await db.none(JOIN_GAME, [user_id, game_id, false, max + 1]);
 };
 
-//Gets Users from Users/Game-Users in a Game
 const getUsers = async (game_id) => { return await db.any(GET_USERS, [game_id]) };
 
-//Gets Games that a User is not currently in that is Not Currently Ongoing
 const getAvailableGames = (user_id) => db.any(AVAILABLE_GAMES,[user_id]);
 
-//Gets Games that a User is not currently in that is Currently Ongoing
 const getRunningGames = (user_id) => db.any(RUNNING_GAMES,[user_id]);
 
-//Get games that User is currently in (game_users)
 const getGames = (user_id) => db.any(USER_GAMES,[user_id]);
 
-//Get all games
 const getAllGames = async () => { return await db.any("SELECT id FROM game"); };
 
 const getEverythingGames = async () => { return await db.any("SELECT * FROM game"); };
@@ -110,7 +92,6 @@ const start = async (game_id,user_id) => {
 
   const colors=["blue","green","yellow","red"];
 
-  //Fill a Gamebag for a specified Game with Cards
   colors.forEach(async element => {
     for(let i=0;i<10;i++){
       await db.none(GAMEBAG,[i.toString(),element,game_id,0,'FALSE']);
@@ -122,14 +103,10 @@ const start = async (game_id,user_id) => {
     await db.none(GAMEBAG,["-4",element,game_id,0,'TRUE']);
   });
 
-  //Player Count for the Game when Start is pressed
   let playerCount = (await player_count(game_id))["count"];
-  //console.log("PlayerCount (DB.games.js) = " + playerCount);  //Debug
 
-  //Get the Users of the Current Game
   let current_game_users = await getUsers(game_id);
   
-  //Fill the usersArray with the IDs of the users in the game
   let usersArray = []
   current_game_users.forEach(element => {
     usersArray.push(element.id)
@@ -213,14 +190,11 @@ const cardCheck = async (current_game, card) => {
   }
   else {
   if(card.specialcard == true){
-    //console.log(JSON.stringify(card) + "cardCheck func")
 
-    //if((current_game.specialcard == true )){
       console.log(JSON.stringify(card) + " card special if after card.color")
       if(parseInt(card.value) == 0 && (card.color == current_game.current_color || current_game.specialcard == true)){
         const nextUserId = await nextUser(card.gameid,card.userid);
         const nextnextUserId = await nextUser(card.gameid,nextUserId)
-        //console.log(nextnextUserId);
         await db.none(UPDATE_CURRENT_GAME,[0,card.color,current_game.current_direction,nextnextUserId,true, 0, 0, card.gameid])
         await Deck.putOneCardintoDeck(card);
       }
@@ -236,7 +210,6 @@ const cardCheck = async (current_game, card) => {
           color = "nocolor"
         }
 
-        //console.log("printing the special card +2 and +4 to update the buffer " + JSON.stringify(card))
         const nextUserId = await nextUser(card.gameid,card.userid);
         await db.none(UPDATE_CURRENT_GAME,[parseInt(card.value),color,current_game.current_direction,nextUserId,true, parseInt(card.value), current_game.buffer_count+1, card.gameid])
         await Deck.putOneCardintoDeck(card);
@@ -251,12 +224,10 @@ const cardCheck = async (current_game, card) => {
       }
 
       if(parseInt(card.value) == -4){
-        //const nextUserId = await nextUser(card.gameid,card.userid);
-        //console.log(card)
+        
         await db.none(UPDATE_CURRENT_GAME,[-4,"nocolor",current_game.current_direction,card.userid,true, 0, 0, card.gameid])
         await Deck.putOneCardintoDeck(card);
       }
-    //}
     
     
   }else{
@@ -282,7 +253,6 @@ const checkCard = async (game_id,user_id,card) => {
   const current_game = await db.one(GET_CURRENT_GAME,[game_id]);
   if(current_game.user_id == -1 || current_game.user_id == card.userid){
     
-    //console.log(current_game.current_color + " color "+card.color);
     await cardCheck(current_game,card);
     
     const usercardsCount = await db.one(SELECT_USER_CARDS_COUNT,[game_id,user_id]);
@@ -301,9 +271,7 @@ const checkCard = async (game_id,user_id,card) => {
 }
 
 const exitFromGameLobby = async (user_id,game_id) => {
-  //getting the player count from the game
   const player_count = await db.one(GET_GAME_USERS_COUNT,[game_id])
-  //deleting the user from the game
   await db.none(DELETE_USER_GAME,[user_id,game_id])
 
   if(is_started(game_id)){
@@ -314,16 +282,12 @@ const exitFromGameLobby = async (user_id,game_id) => {
       updateuser(game_id,nextUserId);
     }
   }
-    //checking the player count, if it is 1 then the game should end and the game will be going to be in a dead state
   if(player_count == 1){
-    //sets the game to dead mode by updating the is_alive to false
     await db.none(UPDATE_IS_ALIVE,[game_id])
   }
 }
 
-// const updateCurrentGame = async (card,nextUserId) => {
-//   await db.none(UPDATE_CURRENT_GAME,[])
-// }
+
 
 const playCard = async(game_id,user_id,card)=>{
   console.log("hello world")
