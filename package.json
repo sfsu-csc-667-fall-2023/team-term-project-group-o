@@ -1,33 +1,64 @@
 {
   "name": "team-term-project-group-o",
   "version": "1.0.0",
-  "description": "[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=12560345)",
+  "description": "UNO-Card game created by Malavya Raval.",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./backend/server.js",
-    "start:dev": "concurrently \"npm:server:dev\" \"npm:build:dev\"",
-    "server:dev": "nodemon ./backend/server.js",
-    "build": "webpack",
-    "build:dev": "webpack --watch"
+    "start:dev": "dotenv -- concurrently \"npm:server:dev\" \"npm:build:css\" \"npm:build:dev\"",
+    "server:dev": "NODE_ENV=development nodemon --watch backend ./backend/server.js",
+    "build:dev": "esbuild ./frontend/index.js ./frontend/games/index.js --bundle --outdir=./backend/static/scripts/ --sourcemap --watch",
+    "build:css": " ./frontend/css/index.css -o ./backend/static/stylesheets/index.css --watch",
+    "db:create": "node-pg-migrate create -- ",
+    "db:migrate": "node-pg-migrate up",
+    "db:rollback": "node-pg-migrate down",
+    "postinstall": "npm run db:migrate"
   },
   "keywords": [],
-  "author": "",
+  "author": "Malavya",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
+    "bcrypt": "^5.1.0",
+    "connect-livereload": "^0.6.1",
+    "connect-pg-simple": "^8.0.0",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "dotenv-cli": "^7.2.1",
     "ejs": "^3.1.9",
+    "esbuild": "0.17.18",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "http-errors": "^2.0.0",
-    "morgan": "^1.10.0"
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "livereload": "^0.9.3",
+    "morgan": "^1.10.0",
+    "node-pg-migrate": "^6.2.2",
+    "pg": "^8.10.0",
+    "pg-promise": "^11.4.3",
+    "prettier": "^2.8.4",
+    "pug": "^3.0.2",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
+    "ts-loader": "^9.4.2",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
-    "babel-loader": "^9.1.3",
-    "concurrently": "^8.2.2",
-    "connect-livereload": "^0.6.1",
-    "livereload": "^0.9.3",
-    "nodemon": "^3.0.2",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
-  }
+    "@babel/preset-env": "^7.21.4",
+    "babel-loader": "^9.1.2",
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^5.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-o.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-o/issues"
+  },
+  "homepage": "https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-o#readme"
 }
