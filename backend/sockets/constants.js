@@ -1,7 +1,7 @@
 const CHAT_MESSAGE_RECEIVED = "chat-message-received";
 const GAME_STATE = "game-state"
 
-const MAX_PLAYERS = 2;
+const MAX_PLAYERS = 10;
 
 
 module.exports = {

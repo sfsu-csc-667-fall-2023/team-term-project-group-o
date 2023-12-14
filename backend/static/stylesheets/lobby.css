@@ -6,13 +6,11 @@ body {
     padding: 0;
 }
 
-/* Top Bar styling */
 #project-label {
     background-color: white;
     text-align: center;
 }
 
-/* Logo container styling */
 .logo-container {
     display: flex;
     justify-content: center;
@@ -24,7 +22,6 @@ body {
     height: auto;
 }
 
-/* Link button container styling */
 .link-button-container {
     display: flex;
     justify-content: space-around;
@@ -41,7 +38,6 @@ body {
     cursor: pointer;
 }
 
-/* Page container styling */
 .page-container {
     display: flex;
     justify-content: space-around;
@@ -61,7 +57,11 @@ body {
     text-align: center;
 }
 
-/* Lobby container styling */
+
+.lobby-title {
+    text-align: center;
+}
+
 .lobby-container {
   flex: 1;
   min-width: 400px;
