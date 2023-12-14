@@ -3354,7 +3354,7 @@
         query: { path: window.location.pathname }
       });
       var gameID = getGameId(document.location.pathname);
-      fetch("/authentication/teamx", {
+      fetch("/authentication/group-o", {
         method: "post"
       }).then((response) => response.json()).then(({ id: userID }) => {
         socket.on(import_events.default.GAMES.GAME_STATE_UPDATED(gameID, userID), async (gameState) => {

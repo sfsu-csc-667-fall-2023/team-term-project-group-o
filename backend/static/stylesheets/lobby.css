@@ -62,8 +62,8 @@ body {
   padding: 20px;
   border: 1px solid black;
   border-radius: 20px;
-  background-color: #ADD8E6; /* Light Blue color */
-  margin-right: 20px; /* Add margin to create space between lobby and chat */
+  background-color: #ADD8E6; 
+  margin-right: 20px;
 }
 
 .lobby-container h1,
@@ -78,6 +78,11 @@ body {
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.create-game-form input[type="submit"]:hover {
+  background-color: #07b4ee; 
+  color: black;
 }
 
 .games-label {

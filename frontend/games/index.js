@@ -17,7 +17,7 @@ socket.on(GAMES.GAME_STARTING, (data) => {
   console.log(GAMES.GAME_STARTING, { data });
 });
 
-fetch("/authentication/teamx", {
+fetch("/authentication/group-o", {
   method: "post",
 })
   .then((response) => response.json())

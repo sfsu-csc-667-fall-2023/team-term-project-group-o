@@ -3362,7 +3362,7 @@
       socket.on(import_events.default.GAME_STARTING, (data) => {
         console.log(import_events.default.GAME_STARTING, { data });
       });
-      fetch("/authentication/teamx", {
+      fetch("/authentication/group-o", {
         method: "post"
       }).then((response) => response.json()).then(({ id: userID }) => {
         socket.on(import_events.default.GAMES.GAME_STATE_UPDATED(gameID, userID), async (gameState) => {

@@ -7,7 +7,7 @@ const router = express.Router();
 const SALT_ROUNDS = 10;
 
 router.get("/register", (_request, response) => {
-  response.render("register", { title: "Jrob's Term Project" });
+  response.render("register", { title: "Term Project" });
 });
 
 router.post("/register", async (request, response) => {
@@ -28,7 +28,7 @@ router.post("/register", async (request, response) => {
   } catch (error) {
     console.log({ error });
     response.render("register", {
-      title: "Jrob's Term Project",
+      title: "Term Project",
       username,
       email,
     });
@@ -36,7 +36,7 @@ router.post("/register", async (request, response) => {
 });
 
 router.get("/login", (_request, response) => {
-  response.render("login", { title: "Jrob's Term Project" });
+  response.render("login", { title: "Term Project" });
 });
 
 router.post("/login", async (request, response) => {
@@ -60,7 +60,7 @@ router.post("/login", async (request, response) => {
   } catch (error) {
     console.log({ error });
 
-    response.render("login", { title: "Jrob's Term Project", email });
+    response.render("login", { title: "Term Project", email });
   }
 });
 
@@ -72,7 +72,7 @@ router.get("/logout", (request, response) => {
   response.redirect("/");
 });
 
-router.post("/teamx", (request, response) => {
+router.post("/group-o", (request, response) => {
   const { id } = request.session.user;
 
   response.json({ id });

@@ -8,7 +8,7 @@ const socket = io({
 
 const gameID = getGameId(document.location.pathname);
 
-fetch("/authentication/teamx", {
+fetch("/authentication/group-o", {
   method: "post",
 })
   .then((response) => response.json())
