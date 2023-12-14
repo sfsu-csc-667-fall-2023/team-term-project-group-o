@@ -117,13 +117,18 @@ router.post("/:id/draw", async (request, response) => {
 });
 
 router.post("/exit/:id", async (request, response) => {
-  const { id: user_id } = request.session.user;
-  const { id: game_id } = request.params;
-  const io = request.app.get("io");
+  try {
+    const { id: user_id } = request.session.user;
+    const { id: game_id } = request.params;
+    const io = request.app.get("io");
 
-  Games.exitFromGameLobby(user_id, game_id);
+    Games.exitFromGameLobby(user_id, game_id);
 
-  response.redirect("/lobby");
+    response.redirect("/lobby");
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Internal Server Error");
+  }
 });
 
 router.get("/init/:id", async (request, response) => {

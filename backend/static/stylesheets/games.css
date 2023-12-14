@@ -1,4 +1,4 @@
-/* Background styling */
+
 body {
     background-image: url('uno.jpg');
     background-size: cover;
@@ -6,20 +6,18 @@ body {
     padding: 0;
 }
 
-/* Top Bar styling */
+
 #project-label {
     background-color: white;
     text-align: center;
 }
 
-/* Logo container styling */
 .logo-container {
     display: flex;
     justify-content: center;
     margin-top: 15px;
 }
 
-/* Logo styling */
 .logo {
     display: block;
     margin-top: 15px;
@@ -29,16 +27,15 @@ body {
     height: auto;
 }
 
-/* Game Buttons container styling */
 .games-buttons-container {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 20%; 
+    margin-right: 20%; 
+    margin-top: 20px; 
 }
 
-/* Submit button styling for lobby and exit forms */
 .lobby-form input[type="submit"],
 .exit-form input[type="submit"] {
     background-color: black;
@@ -47,12 +44,25 @@ body {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
-/* Page container styling */
+.exit-form input[type="submit"]:hover {
+    animation: pulse 0.5s ease-in-out;
+    background-image: linear-gradient(to bottom, #ff5722, #d63300);
+
+}
+
+.lobby-form input[type="submit"]:hover{
+    animation: pulse 0.5s ease-in-out;
+    background-image: linear-gradient(to bottom, #191970, #00ffcc);
+}
+
+
+
 .page-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: flex-start;
 }
 
@@ -71,7 +81,7 @@ body {
     padding: 20px;
     border: 1px solid black;
     border-radius: 20px;
-    background-color: #ADD8E6; /* Light Blue color */
+    background-color: #ADD8E6;
 }
 
 /* Game container header styling */
@@ -96,7 +106,6 @@ body {
     margin-right: 10px;
 }
 
-/* Start button styling */
 .start-button {
     display: inline-block;
     padding: 10px 30px;
@@ -109,20 +118,34 @@ body {
     margin-bottom: 4px;
 }
 
-/* Users card count styling */
+.start-button:hover {
+    animation: pulse 0.5s ease-in-out;
+    background-image: linear-gradient(to bottom, #0b4a2a, #61ed5e);      
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+
 #users-cardcount {
     display: flex;
     justify-content: center;
 }
 
-/* Current player turn styling */
+
 #current-player-turn {
     display: flex;
     justify-content: center;
     margin: 10px;
 }
 
-/* Main cards styling */
+
 .main-cards {
     display: flex;
     justify-content: center;
@@ -130,20 +153,20 @@ body {
     margin-bottom: 20px;
 }
 
-/* Top card image styling */
+
 .topcard-img {
     width: 100px;
     border: 2px solid black;
     border-radius: 20px;
 }
 
-/* Game card rows styling */
+
 #game-card-rows {
     display: flex;
     justify-content: center;
 }
 
-/* Card image styling */
+
 .cardimage {
     width: 100px;
     height: 150px;
@@ -152,29 +175,26 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Chat box styling */
-/* Chat box styling */
+
 #chat {
     flex: 0 0 300px;
     margin-right: 20px;
-    background-color: #E6E6FA; /* or any desired color */
+    background-color: #E6E6FA; 
     padding: 20px;
     border-radius: 20px;
-    margin-top: 0; /* Adjust this value to align with the adjacent box */
+    margin-top: 0; 
     margin-bottom: 20px;
     font-size: 20px;
     margin-bottom: 40px;
     text-align: center;
 }
 
-/* Chat container styling */
 #chat-container {
     margin-top: 20px;
     flex-grow: 1;
     text-align: left;
 }
 
-/* Messages styling */
 #messages {
     max-height: 200px;
     overflow-y: auto;
@@ -185,7 +205,6 @@ body {
     flex-grow: 1;
 }
 
-/* Chat message input styling */
 input#chatMessage {
     width: calc(100% - 20px);
     padding: 10px;
@@ -193,7 +212,19 @@ input#chatMessage {
     border-radius: 4px;
 }
 
-/* Username in messages styling */
 #messages .username {
     font-weight: bold;
 }
+
+
+
+@keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  
