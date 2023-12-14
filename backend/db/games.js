@@ -271,17 +271,19 @@ const checkCard = async (game_id,user_id,card) => {
 }
 
 const exitFromGameLobby = async (user_id,game_id) => {
-  const player_count = await db.one(GET_GAME_USERS_COUNT,[game_id])
-  await db.none(DELETE_USER_GAME,[user_id,game_id])
+  const player_count = await db.one(GET_GAME_USERS_COUNT,[game_id]);
+
+  await db.none(DELETE_USER_GAME,[user_id,game_id]);
 
   if(is_started(game_id)){
     await db.none(REMOVE_USER_GAMEBAG,[game_id,user_id]);
     const current_game = await getCurrentGame(game_id);
     if(current_game.user_id == user_id){
-      const nextUserId = nextUser(game_id,user_id);
-      updateuser(game_id,nextUserId);
+      // const nextUserId =  nextUser(game_id,user_id);
+      // updateuser(game_id,nextUserId);
     }
   }
+
   if(player_count == 1){
     await db.none(UPDATE_IS_ALIVE,[game_id])
   }
