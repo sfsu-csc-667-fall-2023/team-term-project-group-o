@@ -4,7 +4,7 @@ const GAME_STATE_UPDATED = (game_id, user_id) => `game:${game_id}:${user_id}:upd
 
 const CHAT_MESSAGE_RECEIVED = (game_id) => `chat${game_id}:message`;
 
-const MAX_PLAYERS = 2;
+const MAX_PLAYERS = 10;
 const GAME_CREATED = "game:created";
 const GAME_STARTING = "game:starting";
 
