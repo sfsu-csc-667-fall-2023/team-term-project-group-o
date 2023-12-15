@@ -9,23 +9,3 @@
 |  Brandon Peralta   |
 | Nicholas Pagcanlungan   |
 | Siarhei Pushkin |
-
-### Instructions
-
-1. install node js
-2. install postgresql
-3. `git clone https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-o/`
-4. `cd team-term-project-group-o/`
-5.  `psql -U postgres`
-6.  `CREATE USER <username> WITH PASSWORD '<password>';
-ALTER USER <username> CREATEDB;
-\q`
-7. `vim .env`
-8. contents of .env file :- `DATABASE_URL=postgres://<username>:<password>@localhost:5432/<database-name>
-SECRET=mySecretKey`
-9. `createdb <database-name>`
-10. brew services start postgresql
-11. npm init
-12. npm install
-13. npm run start:dev
-
