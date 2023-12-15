@@ -265,7 +265,7 @@ const checkCard = async (game_id,user_id,card) => {
     return true;
   }
   else{
-    console.log("This is not your turn, current turn is of user id "+ current_game.user_id + "and top card is " + current_game.current_number + " "+ current_game.current_color)
+    console.log("not your chance, current chance is user id "+ current_game.user_id + "and top card values are " + current_game.current_number + " "+ current_game.current_color)
   }
   return false;
 }

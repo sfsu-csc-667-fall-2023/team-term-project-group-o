@@ -79,6 +79,15 @@ router.get("/:id/start", async (request, response) => {
   response.send();
 });
 
+router.get("/:id/uno", async (request, response) => {
+  const { id: game_id } = request.params;
+  const { id: user_id } = request.session.user;
+  const io = request.app.get("io");
+  const game_started = await Games.is_started(parseInt(game_id));
+
+  
+});
+
 router.post("/play/:id", async (request, response) => {
   const { id: user_id } = request.session.user;
   const io = request.app.get("io");
@@ -114,6 +123,25 @@ router.post("/:id/draw", async (request, response) => {
   }
 
   response.send();
+});
+
+router.post("/:id/uno", async (request, response) => {
+  const io = request.app.get("io");
+  const {id :game_id} = request.params;
+  const { username, id : user_id } = request.session.user;
+  let message = username.concat(" has UNO!");
+
+  const data = {
+    game_id : parseInt(game_id),
+    id : user_id,
+    message :  message,
+    username : "System",
+    timestamp: Date.now(),
+  }
+
+  io.emit(GAMES.CHAT_MESSAGE_RECEIVED(game_id), data);
+
+  response.status(200);
 });
 
 router.post("/exit/:id", async (request, response) => {

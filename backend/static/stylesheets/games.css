@@ -111,6 +111,7 @@ body {
     padding: 10px 30px;
     text-decoration: none;
     background-color: black;
+    align-self: self-start;
     color: white;
     border-radius: 4px;
     border: none;
@@ -119,6 +120,23 @@ body {
 }
 
 .start-button:hover {
+    animation: pulse 0.5s ease-in-out;
+    background-image: linear-gradient(to bottom, #0b4a2a, #61ed5e);      
+  }
+
+  .uno-button {
+    display: inline-block;
+    padding: 10px 30px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.uno-button:hover {
     animation: pulse 0.5s ease-in-out;
     background-image: linear-gradient(to bottom, #0b4a2a, #61ed5e);      
   }
