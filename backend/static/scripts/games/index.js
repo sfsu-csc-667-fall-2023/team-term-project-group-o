@@ -3326,6 +3326,7 @@
       var PLAYER_JOINED = (game_id) => `game:${game_id}:player-joined`;
       var GAME_STATE_UPDATED = (game_id, user_id) => `game:${game_id}:${user_id}:updated`;
       var CHAT_MESSAGE_RECEIVED = (game_id) => `chat${game_id}:message`;
+      var LEADERBOARD_UPDATED = (game_id, user_id) => `game:${game_id}:updated:${user_id}:to-leaderboard`;
       var MAX_PLAYERS = 10;
       var GAME_CREATED = "game:created";
       var GAME_STARTING = "game:starting";
@@ -3339,7 +3340,8 @@
         MAX_PLAYERS,
         GAME_STARTING,
         GAME_UPDATED,
-        CHAT_MESSAGE_RECEIVED
+        CHAT_MESSAGE_RECEIVED,
+        LEADERBOARD_UPDATED
       };
     }
   });

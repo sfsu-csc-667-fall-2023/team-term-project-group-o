@@ -8,7 +8,7 @@ router.post("/:id", async (request, response) => {
   const {id :game_id} = request.params;
   const { message } = request.body;
   const { username, id : user_id } = request.session.user;
-
+  console.log(username)
   const data = {
     game_id : parseInt(game_id),
     id : user_id,

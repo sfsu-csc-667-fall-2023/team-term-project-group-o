@@ -20,7 +20,14 @@ router.post("/create", async (request, response) => {
 router.get("/:id", async (request, response) => {
   const { id: game_id } = request.params;
   const { id: user_id } = request.session.user;
+  const { username, id :id } = request.session.user;
   const io = request.app.get("io");
+
+  const data = {
+    game_id : parseInt(game_id),
+    id : user_id,
+    username : username,
+  }
 
   try {
 
@@ -40,6 +47,8 @@ router.get("/:id", async (request, response) => {
       game_id: game_id
     });
   }
+
+  io.emit(GAMES.LEADERBOARD_UPDATED(game_id, user_id), data);
 });
 
 router.get("/:id/join", async (request, response) => {

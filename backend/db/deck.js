@@ -17,6 +17,7 @@ const GET_CURRENT_GAME = "SELECT * FROM current_game WHERE game_id = $1";
 
 const putOneCardintoDeck = async (card) => {
   await db.none(UPDATE_GAMEBAG_USERID,[0,card["gameid"],card["value"],card["color"],card["specialcard"]]);
+  
 }
 
 const getOneCardFromDeck = async (user_id,game_id,count) => {

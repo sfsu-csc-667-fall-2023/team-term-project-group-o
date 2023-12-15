@@ -31,10 +31,13 @@ const SELECT_GAME_USER = "SELECT * FROM game_users WHERE game_id = $1 AND user_i
 const REMOVE_USER_GAMEBAG = "UPDATE gamebag SET userid = 0 WHERE gameid=$1 AND userid = $2";
 
 const GET_CURRENT_GAME = "SELECT * FROM current_game WHERE game_id = $1"
+const GET_USERNAME = "SELECT username FROM users WHERE id = $1"
 const UPDATE_CURRENT_GAME = "UPDATE current_game SET current_number=$1, current_color=$2, current_direction=$3, user_id=$4, specialcard = $5, current_buffer=$6, buffer_count=$7 WHERE game_id=$8"
 const UPDATE_CURRENT_USER_DIRECTION = "UPDATE current_game SET user_id=$1, current_direction=$2 WHERE game_id=$3";
 const INSERT_CURRENT_GAME = "INSERT INTO current_game (current_number, current_color, current_direction, user_id, specialcard, current_buffer, buffer_count, game_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)"
 const UPDATE_CURRENT_GAME_USER = "UPDATE current_game SET user_id =$1 WHERE game_id = $2"
+const ADD_TO_LEADERBOARD = "INSERT INTO leaderboard (game_id, player_id, player_name) VALUES ($1, $2, $3)"
+const GET_LEADERBOARD = "SELECT * FROM leaderboard WHERE game_id = $1";
 
 const is_started = async (game_id) => {
   const games= await db.any("SELECT * from game");
@@ -49,6 +52,12 @@ const is_started = async (game_id) => {
     }
   })
   return gamestarted
+}
+
+const get_leaderboard = async (game_id) => {
+  const result = await db.any(GET_LEADERBOARD,[game_id]);
+
+  return result;
 }
 
 const create = async (user_id) => {
@@ -82,6 +91,7 @@ const getEverythingGames = async () => { return await db.any("SELECT * FROM game
 const getEverythingGameUsers = async () => {return await db.any(GET_EVERYTHING_GAME_USERS); };
 
 const player_count = async (game_id) => {return await db.one(COUNT_PLAYERS,[game_id]);};
+
 
 
 const getCurrentGame = async (game_id) => {
@@ -250,6 +260,8 @@ const checkCard = async (game_id,user_id,card) => {
   console.log(JSON.stringify(card) + "card check")
   
   console.log(card, game_id);
+  const user = await db.one(GET_USERNAME,[user_id])
+  const { username, id : id } = user;
   const current_game = await db.one(GET_CURRENT_GAME,[game_id]);
   if(current_game.user_id == -1 || current_game.user_id == card.userid){
     
@@ -258,9 +270,13 @@ const checkCard = async (game_id,user_id,card) => {
     const usercardsCount = await db.one(SELECT_USER_CARDS_COUNT,[game_id,user_id]);
     const getgameUsers = await db.any(GET_GAME_USERS,[game_id]);
     console.log(usercardsCount.count + " " + getgameUsers.length);
+    console.log("This is for leaderboard:"+  [username]);
     if(usercardsCount.count == 0){
       await db.none(DELETE_USER_GAME,[user_id,game_id]);
+      
+      await db.none(ADD_TO_LEADERBOARD,[game_id,user_id,[username]]);
       const getgameUsers = await db.any(GET_GAME_USERS,[game_id]);
+      
     }
     return true;
   }
@@ -341,4 +357,5 @@ module.exports = {
   updateuser,
   getCurrentGame,
   findUser,
+  get_leaderboard,
 };
