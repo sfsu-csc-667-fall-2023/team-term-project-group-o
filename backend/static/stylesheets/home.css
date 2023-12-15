@@ -1,68 +1,67 @@
 body {
-    background-image: url('uno.jpg');
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  #project-label {
-    background-color: white;
-    text-align: center;
-    padding: 10px; 
-  }
-  
-  .logo-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .logo {
-    display: block;
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
-    height: auto;
-  }
-  
-  .link-button-list-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-top: auto;
-    padding: 10px; 
-  }
-  
-  .link-button-list {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-    display: flex;
-    gap: 20px; 
-  }
-  
-  .link-button {
-    display: inline-block;
-    padding: 15px 30px;
-    text-decoration: none;
-    background: linear-gradient(to bottom, #E0E7FF, #D8BFE2); 
-    color: #111111;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background 0.5s ease-in-out;
-  }
-  
-  .link-button:hover {
-    background: #D8BFE2; 
-  }
-  
-  .link-button i { 
-    margin-right: 5px;
-    font-size: 16px;
-  }
-  
+  background-image: url('uno.jpg');
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#project-label {
+  background-color: white;
+  text-align: center;
+  padding: 10px; 
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: auto;
+}
+
+.link-button-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: auto;
+  padding: 10px; 
+}
+
+.link-button-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  gap: 20px; 
+}
+
+.link-button {
+  display: inline-block;
+  padding: 15px 30px;
+  text-decoration: none;
+  background: linear-gradient(to bottom, #E0E7FF, #D8BFE2); 
+  color: #111111;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background 0.5s ease-in-out;
+}
+
+.link-button:hover {
+  background: #D8BFE2; 
+}
+
+.link-button i { 
+  margin-right: 5px;
+  font-size: 16px;
+}

@@ -28,8 +28,10 @@
     <div class="lobby-container">
       <!-- Lobby Basic Information -->
       <h1 class="lobby-title">Lobby</h1>
-      <h3 class="current-user-name"> User: <%= user.username %> - ID:(<%= user.id %>)</h3>
-
+      <h3 class="current-user-name">
+        Username:- <%= user.username %> <br>
+        User-ID:- <%= user.id %>
+    </h3>
       <!-- Game Create Button -->
       <form class="create-game-form" method="post" action="/games/create">
         <input type="submit" value="Create Game" />
@@ -41,7 +43,7 @@
 
         <!-- Available Games -->
         <div class="game-section">
-          <label class="games-label"> Available Games (Not Joined, Not Started) </label>
+          <label class="games-label"> Join Games :- </label>
           <div class="button-container">
             <% if(availableGames.length > 0) { %>
               <% for(game of availableGames) { %>
@@ -55,39 +57,37 @@
 
         <!-- Rejoinable Games -->
         <div class="game-section">
-          <label class="games-label"> Games (Joined, Not Started) </label>
+          <label class="games-label"> Ready to Start Games :-  </label>
           <div class="button-container">
             <% if(reJoinGames.length > 0) { %>
               <% for(game of reJoinGames) { %>
                 <a class="join-button" href="/games/<%= game.id %>">Join <%= game.id %></a>
               <% }%>
             <% } else { %>
-              <p>No Games are Available to Join, instead create one</p>
+              <p><%= user.username %> is not in any games which are ready to Start</p>
             <% } %>
           </div>
         </div>
 
         <!-- Running Games -->
         <div class="game-section">
-          <label class="games-label">Running Games (Joined, Started)</label>
+          <label class="games-label">Active Games :- </label>
           <div class="button-container">
             <% if(runningGames.length > 0) { %>
               <% for(game of runningGames) { %>
                 <a class="join-button" href="/games/<%= game.id %>">Join <%= game.id %></a>
               <% }%>
             <% } else { %>
-              <p>No Games are Available to Join, instead create one</p>
+              <p><%= user.username %> is not in any Active Games</p>
             <% } %>
           </div>
         </div>
       </div> 
-      <!-- End of Game List -->
     </div>
-    <!-- End of Game List Container-->
 
     <!-- Chat Area -->
     <div id="chat">
-      <h2>Chat Area</h2>
+      <h2>Lobby Chat</h2>
       <!-- Chat Box -->
       <div id="chat-container">
         <div id="messages"></div>
