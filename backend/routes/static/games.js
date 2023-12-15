@@ -122,7 +122,11 @@ router.post("/exit/:id", async (request, response) => {
     const { id: game_id } = request.params;
     const io = request.app.get("io");
 
-    Games.exitFromGameLobby(user_id, game_id);
+    const game_started = await Games.is_started(parseInt(game_id));
+    
+    if (game_started) {
+      Games.exitFromGameLobby(user_id, game_id);
+    }
 
     response.redirect("/lobby");
   } catch (error) {
